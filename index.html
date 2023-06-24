@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<title>CSS de Light!!!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="main.css">
+
+</head>
+
+
+<body>
+<!-- 最初に表示させる画面 -->
+<input type="checkbox" id="start_btn">
+<div id="welcome">
+  <h1>CSS電球にゃ！</h1>
+  <p>Copyright 2023 Lumlia</p>
+</div>
+
+
+<!-- メイン画面 -->
+<div id="light_box">
+  <input type="checkbox" id="power_btn">  <!-- 電源ボタン -->
+
+  <!-- 色変更ボタン -->
+  <input type="radio" name="color" class="color_radio" id="red">
+  <input type="radio" name="color" class="color_radio" id="yellow" checked>
+  <input type="radio" name="color" class="color_radio" id="green">
+  <input type="radio" name="color" class="color_radio" id="blue">
+
+  <!-- 光量変更ボタン -->
+  <input type="radio" name="strength" class="strength_radio" id="st1">
+  <input type="radio" name="strength" class="strength_radio" id="st2">
+  <input type="radio" name="strength" class="strength_radio" id="st3" checked>
+  <input type="radio" name="strength" class="strength_radio" id="st4">
+
+  <!-- 電球 -->
+  <div id="light_color"></div>
+  <div id="light_bulb_box">
+    <div id="lb1"></div>
+    <div id="lb2"></div>
+    <div id="lb3"></div>
+    <div id="lb4"></div>
+  </div>
+</div>
+
+</body>
+</html>

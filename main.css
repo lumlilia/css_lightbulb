@@ -1,0 +1,299 @@
+@charset "utf-8";
+
+html{
+  touch-action: manipulation;
+}
+
+body{
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+
+
+/* チェックボックスとラジオボタンを破壊するにゃ！ */
+
+input[type=checkbox],
+input[type=radio]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}
+
+
+
+/* Welcome!!!! */
+
+#welcome, #start_btn{
+  position: absolute;
+  transition: 0.5s;
+}
+
+#welcome{
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  background-color: white;
+  overflow: hidden;
+}
+
+#welcome h1,
+#welcome p{
+  margin: 0;
+}
+
+#start_btn{
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  height: 40px;
+  z-index: 110;
+  text-align: center;
+  border: 2px black solid;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+}
+
+#start_btn::before{
+  content: 'START';
+  font-size: 30px;
+}
+
+/* お前を消す方法 */
+
+#start_btn:checked ~ #welcome{
+  height: 0;
+  opacity: 0;
+}
+
+#start_btn:checked{
+  display: none;
+}
+
+
+
+/* 操作ボタンを作るにゃ！ */
+
+/* 電源ボタン */
+
+#power_btn{
+  width: 50px;
+  height: 50px;
+  border: 2px white solid;
+  border-radius: 5px;
+}
+
+#power_btn::before,
+#power_btn::after{
+  content: '';
+  display: block;
+  box-sizing: border-box;
+}
+
+#power_btn::before{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px white solid;
+  transform: translate(8px, 10px);
+}
+
+#power_btn::after{
+  width: 1px;
+  height: 16px;
+  border-radius: 1.5px;
+  border: 1.5px white solid;
+  transform: translate(22px, -24px);
+}
+
+#power_btn:checked{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* 色変更ボタン */
+
+.color_radio{
+  width: 25px;
+  height: 50px;
+  border: 2px white solid;
+  border-radius: 3px;
+  transition: 0.1s;
+}
+.color_radio:checked{
+  width: 50px;
+}
+
+#red{
+  margin-left: 10px;
+  background-color: #7f0000;
+}
+#red:checked{
+  background-color: #ff0000;
+}
+
+#yellow{
+  background-color: #7f7f00;
+}
+#yellow:checked{
+  background-color: #ffff00;
+}
+
+#green{
+  background-color: #007f00;
+}
+#green:checked{
+  background-color: #00ff00;
+}
+
+#blue{
+  background-color: #00007f;
+}
+#blue:checked{
+  background-color: #0000ff;
+}
+
+.strength_radio{
+  width: 25px;
+  border: 2px white solid;
+  border-radius: 3px;
+  transition: 0.1s;
+}
+.strength_radio:checked{
+  background-color: white;
+}
+
+#st1{
+  height: 20px;
+  margin-left: 10px;
+}
+
+#st2{
+  height: 30px;
+}
+
+#st3{
+  height: 40px;
+}
+
+#st4{
+  height: 50px;
+}
+
+
+
+/* 光周りを準備するにゃ！ */
+
+#light_box{
+  width: 100%;
+  height: 100svh;
+  margin: 0;
+  background-color: black;
+}
+
+#light_color{
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 55px);
+  margin: 0;
+  opacity: 0;
+  transition: 0.8s;
+}
+
+
+
+/* 電球を作るにゃ！ */
+
+#light_bulb_box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#lb1{
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 25% 50%;
+  border: 2px lightgray solid;
+  transform: rotate(45deg);
+  transition: 0.2s;
+}
+
+#lb2, #lb3, #lb4{
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  background-color: gray;
+}
+
+#lb2, #lb3{
+  width: 26px;
+  height: 10px;
+  border-radius: 10px;
+  transform: translate(14px, -1px);
+}
+
+#lb4{
+  width: 10px;
+  height: 5px;
+  border-radius: 0 0 2px 2px;
+  transform: translate(22px, -1px);
+}
+
+
+
+/* 操作時の動作を作るにゃ！ */
+
+/* 電球を発光させる */
+
+#power_btn:checked ~ #light_bulb_box #lb1{
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: -2px -2px 10px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 光量ボタンによって透過率を変える */
+
+#power_btn:checked ~ #st1:checked ~ #light_color{
+  opacity: 0.25;
+}
+
+#power_btn:checked ~ #st2:checked ~ #light_color{
+  opacity: 0.5;
+}
+
+#power_btn:checked ~ #st3:checked ~ #light_color{
+  opacity: 0.75;
+}
+
+#power_btn:checked ~ #st4:checked ~ #light_color{
+  opacity: 1;
+}
+
+/* 色操作  */
+
+#red:checked ~ #light_color{
+  background-color: red;
+}
+
+#yellow:checked ~ #light_color{
+  background-color: yellow;
+}
+
+#green:checked ~ #light_color{
+  background-color: lime;
+}
+
+#blue:checked ~ #light_color{
+  background-color: blue;
+}
