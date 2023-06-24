@@ -118,7 +118,6 @@ input[type=radio]{
 }
 
 
-
 /* 色変更ボタン */
 
 .color_radio{
@@ -160,6 +159,9 @@ input[type=radio]{
 #blue:checked{
   background-color: #0000ff;
 }
+
+
+/* 光量変更ボタン */
 
 .strength_radio{
   width: 25px;
